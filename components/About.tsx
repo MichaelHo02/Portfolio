@@ -4,7 +4,7 @@ import { urlFor } from '../sanity'
 import { PageInfo } from '../typings'
 
 type Props = {
-  pageInfo: PageInfo
+  pageInfo?: PageInfo
 }
 
 const About = ({ pageInfo }: Props) => {

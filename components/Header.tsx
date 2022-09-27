@@ -4,7 +4,7 @@ import { SocialIcon } from "react-social-icons"
 import { Social } from '../typings'
 
 type Props = {
-  socials: Social[]
+  socials?: Social[]
 }
 
 const Header = ({ socials }: Props) => {
@@ -26,7 +26,7 @@ const Header = ({ socials }: Props) => {
         }}
         className="flex flex-row items-center">
         {/* Social icons */}
-        {socials.map((social) => (
+        {socials?.map((social) => (
           <SocialIcon
             key={social._id}
             url={social.url}

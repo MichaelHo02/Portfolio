@@ -7,12 +7,12 @@ import { PageInfo } from '../typings'
 import BackgroundCircle from './BackgroundCircle'
 
 type Props = {
-  pageInfo: PageInfo
+  pageInfo?: PageInfo
 }
 
 const Hero = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
-    words: [`My name is ${pageInfo.name}`, "Nice to meet you!", "Take a look at my interesting life."],
+    words: [`My name is ${pageInfo?.name}`, "Nice to meet you!", "Take a look at my interesting life."],
     loop: true,
     delaySpeed: 2000
   })
