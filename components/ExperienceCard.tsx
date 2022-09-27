@@ -24,7 +24,9 @@ const ExperienceCard = ({ experience }: Props) => {
         <div className='flex space-x-2 my-2'>
           {/* Tech stack */}
           {experience.technologies.map((technology) => (
-            <img key={technology._id} className='h-10 w-10' src={urlFor(technology?.image).url()} alt="" />
+            <>{technology?.image &&
+              < img key={technology._id} className='h-10 w-10' src={urlFor(technology?.image).url()} alt="" />}
+            </>
           ))}
         </div>
         <p className='uppercase py-5 text-gray-300'>
