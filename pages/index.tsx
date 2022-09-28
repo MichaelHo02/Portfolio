@@ -39,7 +39,7 @@ const Home = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header socials={socials} />
+      <Header pageInfo={pageInfo} socials={socials} />
       <section id="hero">
         <Hero pageInfo={pageInfo} />
       </section>
