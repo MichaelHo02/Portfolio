@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 type Props = {}
 
@@ -7,23 +7,21 @@ const BackgroundCircle = (props: Props) => {
   return (
     <motion.div
       initial={{
-        opacity: 0,
+        scale: 0,
+        borderRadius: '100%',
       }}
       animate={{
-        scale: [1, 2, 2, 3, 1],
-        opacity: [0.1, 0.2, 0.4, 0.8, 0.1, 1.0],
-        borderRadius: ['20%', '20%', '50%', '80%', '20%']
+        scale: [0.2, 0.5, 0.5, 0.8, 1],
+        borderRadius: ["20% 10%", "40% 10%", "60% 10%", "80% 10%", "0% 0%"],
       }}
       transition={{
-        duration: 2.5,
+        duration: 2,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+        repeatDelay: 1
       }}
-      className="relative flex justify-center items-center">
-      <div className='absolute border border-[#333333] rounded-full h-[200px] w-[200px] mt-52 animate-ping' />
-      <div className='absolute border border-[#333333] rounded-full h-[300px] w-[300px] mt-52 animate-ping' />
-      <div className='absolute border border-[#333333] rounded-full h-[500px] w-[500px] mt-52 animate-ping' />
-      <div className='absolute border border-[#F7AB0A] rounded-full h-[650px] w-[650px] mt-52 animate-ping' />
-      <div className='absolute border border-[#333333] rounded-full h-[800px] w-[800px] mt-52 animate-ping' />
-    </motion.div>
+      className="absolute w-full h-full bg-gradient-to-tr from-[#12C2E9] via-[#C471ED] to-[#F64F59] z-0"
+    />
   )
 }
 
