@@ -27,15 +27,15 @@ const Hero = ({ pageInfo }: Props) => {
           alt="" />
       }
       <div className="z-20">
-        <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>
+        <h2 className='text-md uppercase text-white/80 pb-2 tracking-[10px] md:tracking-[15px]'>
           {pageInfo?.role}
         </h2>
-        <h1 className='text-5xl lg:text-6xl font-semibold px-10'>
-          <span className=''>{text}</span>
-          <Cursor cursorColor='#F7AB0A' />
+        <h1 className='text-4xl md:text-5xl lg:text-6xl font-semibold px-10'>
+          <span>{text}</span>
+          <Cursor cursorColor='#000000' />
         </h1>
 
-        <div className='pt-5'>
+        <div className='pt-5 space-x-1 space-y-2'>
           <Link href="#about">
             <button className='heroButton'>About</button>
           </Link>

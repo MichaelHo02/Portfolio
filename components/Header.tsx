@@ -1,3 +1,4 @@
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
 import { motion } from "framer-motion"
 import Link from 'next/link'
 import { SocialIcon } from "react-social-icons"
@@ -21,10 +22,11 @@ const Header = ({ pageInfo, socials }: Props) => {
           transition={{ duration: 1 }}
           className="flex flex-row items-center space-x-2">
           {socials?.map((social) => (
-            <SocialIcon key={social._id} url={social.url} style={{ width: 40, height: 40 }} />
+            <SocialIcon key={social._id} url={social.url} style={{ width: 40, height: 40 }} className='p-3' />
           ))}
           <Link href='#contactMe'>
-            <div className='cursor-pointer heroButton flex items-center'>
+            <div className='cursor-pointer p-3 md:px-6 md:py-3 heroButton flex items-center space-x-1'>
+              <EnvelopeIcon className='w-[20px] h-[20px]' />
               <p className="uppercase hidden md:inline-flex text-sm text-gray-800">Get In Touch</p>
             </div>
           </Link>

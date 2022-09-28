@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #12c2e9;
+  --secondary-color: #f64f59;
+  --tertiary-color: #c471ed;
+}
+
 @layer components {
+  .gradientTheme {
+    @apply bg-gradient-to-tr from-primary-color via-tertiary-color to-secondary-color;
+  }
   .heroButton {
-    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40;
+    @apply px-6 py-2 bg-gray-300 rounded-full uppercase font-medium text-xs tracking-widest text-black transition-all hover:bg-gray-400 hover:animate-pulse;
   }
 
   .sectionHeader {
