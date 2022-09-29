@@ -9,8 +9,8 @@ type Props = {
 const SkillsCard = ({ title, children }: Props) => {
   return (
     <motion.div
-      initial={{ x: -500, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
       className='w-full bg-gradient-to-bl from-primary-color to-tertiary-color rounded-md shadow-lg'>
