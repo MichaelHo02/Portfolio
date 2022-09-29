@@ -21,7 +21,11 @@
   }
 
   .sectionHeader {
-    @apply absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl;
+    @apply uppercase tracking-[20px] text-gray-500 text-2xl mt-10;
+  }
+
+  .sectionSubHeader {
+    @apply uppercase tracking-[3px] text-gray-500 text-sm;
   }
 
   .contactRow {

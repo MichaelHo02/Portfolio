@@ -24,5 +24,10 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'url',
+      title: 'URL',
+      type: 'url',
+    },
   ],
 };
