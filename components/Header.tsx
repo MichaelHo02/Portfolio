@@ -11,7 +11,7 @@ type Props = {
 
 const Header = ({ pageInfo, socials }: Props) => {
   return (
-    <header className="sticky top-0 w-screen z-40 xl:items-center backdrop-blur-sm bg-white/80">
+    <header className="sticky top-0 w-screen z-40 backdrop-blur-sm bg-white/80">
       <div className='flex items-center justify-between max-w-screen-lg mx-auto p-5'>
         <motion.div>
           <p className='text-lg font-semibold'>{pageInfo?.name.split(' ')[0]} Portfolio</p>
@@ -25,9 +25,9 @@ const Header = ({ pageInfo, socials }: Props) => {
             <SocialIcon key={social._id} url={social.url} style={{ width: 40, height: 40 }} className='p-3' />
           ))}
           <Link href='#contactMe'>
-            <div className='cursor-pointer p-3 md:px-6 md:py-3 heroButton flex items-center space-x-1'>
+            <div className='cursor-pointer p-3 md:px-6 md:py-3 btn flex items-center justify-center space-x-2'>
               <EnvelopeIcon className='w-[20px] h-[20px]' />
-              <p className="uppercase hidden md:inline-flex text-sm text-gray-800">Get In Touch</p>
+              <p className="uppercase hidden md:inline-flex text-sm">Get In Touch</p>
             </div>
           </Link>
         </motion.div>

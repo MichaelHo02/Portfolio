@@ -26,7 +26,7 @@ const Hero = ({ pageInfo }: Props) => {
           src={urlFor(pageInfo?.heroImage).url()}
           alt="" />
       }
-      <div className="z-20">
+      <div className="z-20 w-full">
         <h2 className='text-md uppercase text-white/80 pb-2 tracking-[10px] md:tracking-[15px]'>
           {pageInfo?.role}
         </h2>
@@ -37,16 +37,16 @@ const Hero = ({ pageInfo }: Props) => {
 
         <div className='pt-5 space-x-1 space-y-2'>
           <Link href="#about">
-            <button className='heroButton'>About</button>
+            <button className='btn btn--secondary'>About</button>
           </Link>
           <Link href="#experience">
-            <button className='heroButton'>Experience</button>
+            <button className='btn btn--secondary'>Experience</button>
           </Link>
           <Link href="#skills">
-            <button className='heroButton'>Skills</button>
+            <button className='btn btn--secondary'>Skills</button>
           </Link>
           <Link href="#projects">
-            <button className='heroButton'>Projects</button>
+            <button className='btn btn--secondary'>Projects</button>
           </Link>
         </div>
       </div>

@@ -12,8 +12,12 @@
   .gradientTheme {
     @apply bg-gradient-to-tr from-primary-color via-tertiary-color to-secondary-color;
   }
-  .heroButton {
-    @apply px-6 py-2 bg-gray-300 rounded-full uppercase font-medium text-xs tracking-widest text-black transition-all hover:bg-gray-400 hover:animate-pulse;
+  .btn {
+    @apply px-6 py-2 bg-gray-800 text-white rounded-full uppercase font-medium text-xs tracking-widest transition-all hover:bg-gray-600 hover:animate-pulse;
+  }
+
+  .btn--secondary {
+    @apply border-2 border-gray-800 bg-white text-gray-800 hover:bg-gray-200;
   }
 
   .sectionHeader {
