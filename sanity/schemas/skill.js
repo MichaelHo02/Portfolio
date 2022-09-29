@@ -29,5 +29,10 @@ export default {
       title: 'URL',
       type: 'url',
     },
+    {
+      name: 'type',
+      title: 'Type',
+      type: 'string',
+    },
   ],
 };

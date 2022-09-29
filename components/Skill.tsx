@@ -9,7 +9,7 @@ const Skill = ({ skill }: Props) => {
   return (
     <div className='relative cursor-pointer'>
       {
-        skill?.image &&
+        skill?.url &&
         <img
           className='h-10 md:h-14 xl:h-18 rounded-md'
           src={skill.url}
