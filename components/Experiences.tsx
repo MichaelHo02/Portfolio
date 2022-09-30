@@ -20,8 +20,7 @@ const Experiences = ({ experiences }: Props) => {
       <div className='w-full absolute top-[58%] bg-secondary-color left-0 h-[200px] -skew-y-12 z-0' />
       <div className='flex flex-col justify-start items-center gap-10 pt-20'>
         <h3 className="sectionHeader">Experiences</h3>
-        <div className='w-full flex space-x-5 overflow-x-hidden p-10 snap-x snap-mandatory z-20'>
-          {/* Experience Card */}
+        <div className='w-full flex space-x-5 overflow-x-auto snap-x snap-proximity p-10 z-20'>
           {experiences?.map((experience) => (
             <ExperienceCard key={experience._id} experience={experience} />
           ))}
