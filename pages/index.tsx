@@ -52,12 +52,12 @@ const Home = ({
         <Experiences experiences={experiences} />
       </section>
 
-      <section id="about">
-        <About pageInfo={pageInfo} />
-      </section>
-
       <section id='projects'>
         <Projects projects={projects} />
+      </section>
+
+      <section id="about">
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id='contactMe'>

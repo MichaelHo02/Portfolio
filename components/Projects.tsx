@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import { urlFor } from '../sanity'
 import { Project } from '../typings'
+import ProjectCard from './ProjectCard'
 
 type Props = {
   projects?: Project[]
@@ -13,47 +14,17 @@ const Projects = ({ projects }: Props) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-      <h3 className='sectionHeader'>Projects</h3>
-      <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80'>
-        {projects?.map((project) => (
-          <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'>
-            {
-              project?.image &&
-              <motion.img
-                initial={{ y: -300 }}
-                transition={{ duration: 1.2 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                src={urlFor(project?.image).url()}
-                alt="" />
-            }
-            <div className='space-y-10 px-0 md:pd-10 max-w-6xl'>
-              <h4 className='text-4xl font-semibold text-center'>
-                <span className='underline decoration-[#F7AB0A]/50'>
-                  Case Study 1 of 3:
-                </span> {' '}
-                {project?.title}
-              </h4>
-              <div className='flex items-center space-x-2 justify-center'>
-                {project?.technologies.map(technology => (
-                  <img
-                    key={technology._id}
-                    className='h-10 w-10'
-                    src={urlFor(technology?.image).url()}
-                    alt="" />
-                ))}
-              </div>
-              <p className='text-lg text-center md:text-left'>
-                {project?.summary}
-              </p>
-            </div>
-          </div>
-        ))}
+      className='relative min-h-screen bg-gray-50 z-0'
+    >
+      <div className='flex flex-col justify-start items-center gap-10 pt-20'>
+        <h3 className='sectionHeader'>Projects</h3>
+        <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20'>
+          {projects?.map((project) => (
+            <ProjectCard key={project._id} project={project} />
+          ))}
+        </div>
       </div>
-
-      <div className='w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12' />
-    </motion.div>
+    </motion.div >
   )
 }
 

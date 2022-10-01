@@ -33,5 +33,11 @@ export default {
       title: 'linkToBuild',
       type: 'url',
     },
+    {
+      name: 'points',
+      title: 'Points',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
   ],
 };
