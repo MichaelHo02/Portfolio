@@ -10,7 +10,7 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
   return (
-    <div className='w-full flex flex-col flex-shrink-0 gap-5 items-center justify-start min-h-screen'>
+    <div className='w-full flex flex-col flex-shrink-0 gap-5 items-center justify-start max-h-screen p-10'>
       <a href={project?.linkToBuild} target='_blank' rel='noopener noreferrer' className='flex items-center justify-center w-2/3 group'>
         <ArrowTopRightOnSquareIcon className='absolute hidden group-hover:block w-10 h-10 z-30' />
         {
@@ -26,7 +26,7 @@ const ProjectCard = ({ project }: Props) => {
           />
         }
       </a>
-      <div className='space-y-10'>
+      <div className='space-y-10 px-20'>
         <h4 className='text-4xl font-semibold text-center'>
           <span className='underline decoration-primary-color'>
             Project:
