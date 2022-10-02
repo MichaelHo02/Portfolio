@@ -55,7 +55,7 @@ const ContactMe = (props: Props) => {
             <textarea {...register('message')} placeholder='Message' className='contactInput' />
             <button
               type='submit'
-              className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold text-lg'
+              className='btn py-5 rounded-md text-lg'
             >Submit</button>
           </form>
         </div>
