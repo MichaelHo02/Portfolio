@@ -10,8 +10,8 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
   return (
-    <div className='w-full flex flex-col flex-shrink-0 gap-5 items-center justify-start max-h-screen p-10'>
-      <a href={project?.linkToBuild} target='_blank' rel='noopener noreferrer' className='flex items-center justify-center w-2/3 group'>
+    <div className='w-full flex flex-col flex-shrink-0 gap-5 items-center justify-start p-0 py-5 md:p-10'>
+      <a href={project?.linkToBuild} target='_blank' rel='noopener noreferrer' className='flex items-center justify-center w-6/12 group'>
         <ArrowTopRightOnSquareIcon className='absolute hidden group-hover:block w-10 h-10 z-30' />
         {
           project?.image &&
@@ -22,15 +22,13 @@ const ProjectCard = ({ project }: Props) => {
             viewport={{ once: true }}
             src={urlFor(project?.image).url()}
             alt=""
+            onDragStart={() => false}
             className='w-full object-contain object-center group-hover:blur-sm'
           />
         }
       </a>
       <div className='space-y-10 px-20'>
         <h4 className='text-4xl font-semibold text-center'>
-          <span className='underline decoration-primary-color'>
-            Project:
-          </span> {' '}
           {project?.title}
         </h4>
         <div className='flex items-center space-x-2 justify-center'>
@@ -47,7 +45,7 @@ const ProjectCard = ({ project }: Props) => {
             </>
           ))}
         </div>
-        <ul className='list-disc space-y-4 ml-5 text-lg'>
+        <ul className='list-disc space-y-4 text-lg'>
           {project?.points.map((point, idx) => (
             <li key={idx}>{point}</li>
           ))}

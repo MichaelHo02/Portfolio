@@ -53,47 +53,45 @@ const Projects = ({ projects }: Props) => {
     >
       <div className='flex flex-col justify-start items-center gap-10 pt-20'>
         <h3 className='sectionHeader'>Projects</h3>
-        <div className='relative w-full flex overflow-hidden z-20'>
-          {
-            projects &&
-            <>
-              <AnimatePresence initial={false} custom={direction} >
-                <motion.div
-                  custom={direction}
-                  variants={variants}
-                  initial='enter'
-                  animate='center'
-                  exit='exit'
-                  transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
-                  }}
-                  drag='x'
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={1}
-                  onDragEnd={(e, { offset, velocity }) => {
-                    const swipe = swipePower(offset.x, velocity.x)
-                    if (swipe < -swipeConfidenceThreshold) {
-                      paginate(1)
-                    } else {
-                      paginate(-1)
-                    }
-                  }}
-                >
-                  <ProjectCard project={projects[projectIdx]} />
-                </motion.div>
-              </AnimatePresence>
-              <div className='absolute flex items-center justify-between w-full h-full'>
-                <div className='btn m-2 p-2 rounded-full cursor-pointer z-30' onClick={() => paginate(-1)}>
-                  <ChevronLeftIcon className='w-10 h-10' />
-                </div>
-                <div className='btn m-2 p-2 rounded-full cursor-pointer z-30' onClick={() => paginate(1)}>
-                  <ChevronRightIcon className='w-10 h-10' />
-                </div>
+        {
+          projects &&
+          <div className='relative w-full h-fit flex z-20'>
+            <AnimatePresence initial={false} custom={direction} >
+              <motion.div
+                custom={direction}
+                variants={variants}
+                initial='enter'
+                animate='center'
+                exit='exit'
+                transition={{
+                  x: { type: 'spring', stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                drag='x'
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x)
+                  if (swipe < -swipeConfidenceThreshold) {
+                    paginate(1)
+                  } else {
+                    paginate(-1)
+                  }
+                }}
+              >
+                <ProjectCard project={projects[projectIdx]} />
+              </motion.div>
+            </AnimatePresence>
+            <div className='absolute flex items-center justify-between w-full h-full'>
+              <div className='btn ml-1 md:ml-8 lg:ml-[10%] xl:ml-[20%] p-2 rounded-full cursor-pointer z-40' onClick={() => paginate(-1)}>
+                <ChevronLeftIcon className='w-10 h-10' />
               </div>
-            </>
-          }
-        </div>
+              <div className='btn mr-1 md:mr-8 lg:mr-[10%] xl:mr-[20%] p-2 rounded-full cursor-pointer z-40' onClick={() => paginate(1)}>
+                <ChevronRightIcon className='w-10 h-10' />
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </motion.div >
   )
