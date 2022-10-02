@@ -29,7 +29,7 @@
   }
 
   .contactRow {
-    @apply flex items-center space-x-5 justify-center;
+    @apply flex items-center gap-5 justify-center;
   }
 
   .contactIcon {
