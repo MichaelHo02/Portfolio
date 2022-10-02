@@ -24,7 +24,7 @@ const ContactMe = (props: Props) => {
           <h3 className='sectionHeader'>Contact</h3>
           <h4 className='text-4xl font-semibold text-center'>
             I have got just what you need.{' '}
-            <span className='decoration-[#F7AB0A]/50 underline'>
+            <span className='decoration-primary-color underline'>
               Let&apos;s Talk
             </span>
           </h4>
