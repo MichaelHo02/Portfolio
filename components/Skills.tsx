@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, Transition, Variant, Variants } from 'framer-motion'
 import React from 'react'
 import Skill from './Skill'
 import { Skill as SkillType } from '../typings'
@@ -9,12 +9,22 @@ type Props = {
   skills?: SkillType[]
 }
 
+const variants: Variants = {
+  initial: { opacity: 0 } as Variant,
+  whileInView: { opacity: 1 } as Variant,
+}
+
+const transition: Transition = {
+  transition: { duration: 1.5 }
+}
+
 const Skills = ({ skills }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
+      variants={variants}
+      initial="initial"
+      whileInView="whileInView"
+      transition={transition}
       className='relative min-h-screen bg-gray-50'>
       <div className='max-w-screen-lg text-center mx-auto'>
         <div className='flex flex-col justify-start items-center gap-10 pt-20'>

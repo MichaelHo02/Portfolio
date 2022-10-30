@@ -60,9 +60,9 @@ const Home = ({
         <About pageInfo={pageInfo} />
       </section>
 
-      <section id='contactMe'>
+      {/* <section id='contactMe'>
         <ContactMe />
-      </section>
+      </section> */}
 
       {/* <Link href='#hero'>
         <div className='sticky bottom-5 w-full cursor-pointer'>

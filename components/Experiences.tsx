@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, Transition, Variant, Variants } from 'framer-motion'
 import React from 'react'
 import { Experience } from '../typings'
 import ExperienceCard from './ExperienceCard'
@@ -7,12 +7,22 @@ type Props = {
   experiences?: Experience[]
 }
 
+const variants: Variants = {
+  initial: { opacity: 0 } as Variant,
+  whileInView: { opacity: 1 } as Variant
+}
+
+const transition: Transition = {
+  duration: 1
+}
+
 const Experiences = ({ experiences }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      variants={variants}
+      initial="initial"
+      whileInView="whileInView"
+      transition={transition}
       className='relative min-h-screen bg-gray-50 z-0'
     >
       <div className='w-full absolute top-[18%] bg-primary-color left-0 h-[200px] -skew-y-12 z-0' />

@@ -35,7 +35,7 @@ const Hero = ({ pageInfo }: Props) => {
           <Cursor cursorColor='#000000' />
         </h1>
 
-        <div className='pt-5 space-x-1 space-y-2'>
+        {/* <div className='pt-5 space-x-1 space-y-2'>
           <Link href="#about">
             <button className='btn btn--secondary'>About</button>
           </Link>
@@ -48,7 +48,7 @@ const Hero = ({ pageInfo }: Props) => {
           <Link href="#projects">
             <button className='btn btn--secondary'>Projects</button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   )

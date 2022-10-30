@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, Transition, Variant, Variants } from 'framer-motion'
 import React from 'react'
 import { urlFor } from '../sanity'
 import { Experience } from '../typings'
@@ -7,25 +7,34 @@ type Props = {
   experience: Experience
 }
 
-const options = {
+const options: any = {
   month: 'short',
-  year: 'numeric'
+  year: 'numeric',
+}
+
+const variants: Variants = {
+  initial: { y: -100, opacity: 0 } as Variant,
+  whileInView: { opacity: 1, y: 0 } as Variant
+}
+
+const transition: Transition = {
+  duration: 1.2
 }
 
 const ExperienceCard = ({ experience }: Props) => {
   const startDate = new Date(experience.dateStarted).toLocaleDateString('en-US', options)
-  const endDate = experience.isCurrentlyWorkingHere ? 'Present' : new Date(experience.dateEnded).toLocaleTimeString('en-US', options)
+  const endDate = experience.isCurrentlyWorkingHere ? 'Present' : new Date(experience.dateEnded).toLocaleDateString('en-US', options)
   return (
     <article
-      // className='flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-white p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-500 overflow-hidden'
       className='flex flex-col rounded-lg gap-7 flex-shrink-0 backdrop-blur-lg bg-gray-200/80 shadow-lg p-6 w-full md:w-1/2 xl:w-1/3 snap-center'
     >
       {
         experience?.companyImage ?
           <motion.img
-            initial={{ y: -100, opacity: 0 }}
-            transition={{ duration: 1.2 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={variants}
+            initial="initial"
+            transition={transition}
+            whileInView="whileInView"
             viewport={{ once: true }}
             src={urlFor(experience?.companyImage).url()}
             className='w-full object-contain object-center rounded-xl'
