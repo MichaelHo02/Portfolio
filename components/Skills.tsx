@@ -2,7 +2,6 @@ import { motion, Transition, Variant, Variants } from 'framer-motion'
 import React from 'react'
 import Skill from './Skill'
 import { Skill as SkillType } from '../typings'
-import { boolean } from 'joi'
 import SkillsCard from './SkillsCard'
 
 type Props = {
