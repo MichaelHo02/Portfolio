@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, Transition, Variant, Variants } from 'framer-motion'
 import React, { useState } from 'react'
 import { urlFor } from '../sanity'
 import { Project } from '../typings'
@@ -36,6 +36,14 @@ type Props = {
   projects?: Project[]
 }
 
+const variants1: Variants = {
+  initial: { opacity: 0 } as Variant,
+  whileInView: { opacity: 1 } as Variant
+}
+const transition: Transition = {
+  duration: 1
+}
+
 const Projects = ({ projects }: Props) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const projectIdx = wrap(0, projects ? projects.length : 0, page);
@@ -46,9 +54,10 @@ const Projects = ({ projects }: Props) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      variants={variants1}
+      initial="initial"
+      whileInView="whileInView"
+      transition={transition}
       className='relative min-h-screen bg-gray-50 z-0'
     >
       <div className='flex flex-col justify-start items-center gap-10 pt-20'>
