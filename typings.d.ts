@@ -37,6 +37,8 @@ export interface Skill extends SanityBody {
   image: Image;
   progress: number;
   title: string;
+  url: string;
+  type: string;
 }
 
 export interface Experience extends SanityBody {
@@ -58,6 +60,7 @@ export interface Project extends SanityBody {
   linkToBuild: string;
   summary: string;
   technologies: Technology[];
+  points: string[];
 }
 
 export interface Social extends SanityBody {

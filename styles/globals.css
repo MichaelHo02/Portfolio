@@ -2,24 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #12c2e9;
+  --secondary-color: #f64f59;
+  --tertiary-color: #c471ed;
+}
+
 @layer components {
-  .heroButton {
-    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40;
+  .gradientTheme {
+    @apply bg-gradient-to-tr from-primary-color via-tertiary-color to-secondary-color;
+  }
+  .btn {
+    @apply px-6 py-2 bg-gray-800 text-white rounded-full uppercase font-medium text-xs tracking-widest transition-all hover:bg-gray-600 hover:animate-pulse group-hover:animate-pulse;
+  }
+
+  .btn--secondary {
+    @apply border-2 border-gray-800 bg-white text-gray-800 hover:bg-gray-200;
   }
 
   .sectionHeader {
-    @apply absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl;
+    @apply uppercase tracking-[20px] text-gray-500 text-2xl mt-10;
+  }
+
+  .sectionSubHeader {
+    @apply uppercase tracking-[3px] text-gray-500 text-sm;
   }
 
   .contactRow {
-    @apply flex items-center space-x-5 justify-center;
+    @apply flex items-center gap-5 justify-center;
   }
 
   .contactIcon {
-    @apply text-[#F7AB0A] h-7 w-7 animate-pulse;
+    @apply text-primary-color h-7 w-7 animate-pulse;
   }
 
   .contactInput {
-    @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 hover:border-[#F7AB0A]/40;
+    @apply outline-none bg-slate-400/10 rounded-sm border-b-2 px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-primary-color focus:text-primary-color hover:border-primary-color;
+  }
+
+  .scrollbarStyle {
+    @apply scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80;
   }
 }

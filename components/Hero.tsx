@@ -12,43 +12,43 @@ type Props = {
 
 const Hero = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
-    words: [`My name is ${pageInfo?.name}`, "Nice to meet you!", "Take a look at my interesting life."],
+    words: [`I'm ${pageInfo?.name}`, "I create meaningful product.", "Think. Make. Solve."],
     loop: true,
     delaySpeed: 2000
   })
   return (
-    <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
+    <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden relative">
       <BackgroundCircle />
       {
         pageInfo?.heroImage &&
-        < img
+        <img
           className='relative rounded-full h-32 w-32 mx-auto object-cover'
           src={urlFor(pageInfo?.heroImage).url()}
           alt="" />
       }
-      <div className="z-20">
-        <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>
+      <div className="z-20 w-full">
+        <h2 className='text-md uppercase text-white/80 pb-2 tracking-[10px] md:tracking-[15px]'>
           {pageInfo?.role}
         </h2>
-        <h1 className='text-5xl lg:text-6xl font-semibold px-10'>
-          <span className=''>{text}</span>
-          <Cursor cursorColor='#F7AB0A' />
+        <h1 className='text-4xl md:text-5xl lg:text-6xl font-semibold px-10'>
+          <span>{text}</span>
+          <Cursor cursorColor='#000000' />
         </h1>
 
-        <div className='pt-5'>
+        {/* <div className='pt-5 space-x-1 space-y-2'>
           <Link href="#about">
-            <button className='heroButton'>About</button>
+            <button className='btn btn--secondary'>About</button>
           </Link>
           <Link href="#experience">
-            <button className='heroButton'>Experience</button>
+            <button className='btn btn--secondary'>Experience</button>
           </Link>
           <Link href="#skills">
-            <button className='heroButton'>Skills</button>
+            <button className='btn btn--secondary'>Skills</button>
           </Link>
           <Link href="#projects">
-            <button className='heroButton'>Projects</button>
+            <button className='btn btn--secondary'>Projects</button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   )

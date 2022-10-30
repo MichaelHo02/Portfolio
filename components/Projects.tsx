@@ -1,59 +1,108 @@
-import { motion } from 'framer-motion'
-import React from 'react'
+import { AnimatePresence, motion, Transition, Variant, Variants } from 'framer-motion'
+import React, { useState } from 'react'
 import { urlFor } from '../sanity'
 import { Project } from '../typings'
+import ProjectCard from './ProjectCard'
+import { wrap } from 'popmotion';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
+
+const variants = {
+  enter: (direction: number) => {
+    return {
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    };
+  },
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1
+  },
+  exit: (direction: number) => {
+    return {
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    };
+  }
+};
+
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
 
 type Props = {
   projects?: Project[]
 }
 
+const variants1: Variants = {
+  initial: { opacity: 0 } as Variant,
+  whileInView: { opacity: 1 } as Variant
+}
+const transition: Transition = {
+  duration: 1
+}
+
 const Projects = ({ projects }: Props) => {
+  const [[page, direction], setPage] = useState([0, 0]);
+  const projectIdx = wrap(0, projects ? projects.length : 0, page);
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-      <h3 className='sectionHeader'>Projects</h3>
-      <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80'>
-        {projects?.map((project) => (
-          <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'>
-            {
-              project?.image &&
-              <motion.img
-                initial={{ y: -300 }}
-                transition={{ duration: 1.2 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                src={urlFor(project?.image).url()}
-                alt="" />
-            }
-            <div className='space-y-10 px-0 md:pd-10 max-w-6xl'>
-              <h4 className='text-4xl font-semibold text-center'>
-                <span className='underline decoration-[#F7AB0A]/50'>
-                  Case Study 1 of 3:
-                </span> {' '}
-                {project?.title}
-              </h4>
-              <div className='flex items-center space-x-2 justify-center'>
-                {project?.technologies.map(technology => (
-                  <img
-                    key={technology._id}
-                    className='h-10 w-10'
-                    src={urlFor(technology?.image).url()}
-                    alt="" />
-                ))}
+      variants={variants1}
+      initial="initial"
+      whileInView="whileInView"
+      transition={transition}
+      className='relative min-h-screen bg-gray-50 z-0'
+    >
+      <div className='flex flex-col justify-start items-center gap-10 pt-20'>
+        <h3 className='sectionHeader'>Projects</h3>
+        {
+          projects &&
+          <div className='relative w-full h-fit flex z-20'>
+            <AnimatePresence initial={false} custom={direction} >
+              <motion.div
+                custom={direction}
+                variants={variants}
+                initial='enter'
+                animate='center'
+                exit='exit'
+                transition={{
+                  x: { type: 'spring', stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                drag='x'
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x)
+                  if (swipe < -swipeConfidenceThreshold) {
+                    paginate(1)
+                  } else {
+                    paginate(-1)
+                  }
+                }}
+              >
+                <ProjectCard project={projects[projectIdx]} />
+              </motion.div>
+            </AnimatePresence>
+            <div className='absolute flex items-center justify-between w-full h-full'>
+              <div className='btn ml-1 md:ml-8 lg:ml-[10%] xl:ml-[20%] p-2 rounded-full cursor-pointer z-40' onClick={() => paginate(-1)}>
+                <ChevronLeftIcon className='w-10 h-10' />
               </div>
-              <p className='text-lg text-center md:text-left'>
-                {project?.summary}
-              </p>
+              <div className='btn mr-1 md:mr-8 lg:mr-[10%] xl:mr-[20%] p-2 rounded-full cursor-pointer z-40' onClick={() => paginate(1)}>
+                <ChevronRightIcon className='w-10 h-10' />
+              </div>
             </div>
           </div>
-        ))}
+        }
       </div>
-
-      <div className='w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12' />
-    </motion.div>
+    </motion.div >
   )
 }
 
